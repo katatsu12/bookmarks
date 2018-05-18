@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <% if current_user %>
+      Singed in as <strong><%= current_user.name %></strong>!
+      <%= link_to "Sing out", singout_path, id: "sing_out" %>
+    <% else %>
+      <%= link_to "Sing in whith Facebook", '/auth/facebook', id: "sing_in" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
