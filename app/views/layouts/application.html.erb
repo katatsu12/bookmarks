@@ -15,6 +15,12 @@
     <% else %>
       <%= link_to "Sing in whith Facebook", '/auth/facebook', id: "sing_in" %>
     <% end %>
+
+    <%= form_tag bookmarks_path, method: 'get' do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search" %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
