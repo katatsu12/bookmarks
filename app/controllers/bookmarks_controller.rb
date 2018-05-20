@@ -1,22 +1,25 @@
+require 'open_image_url'
+
 class BookmarksController < ApplicationController
   before_action :set_bookmark, only: [:show, :edit, :update, :destroy]
+  before_action :set_auth
 
   def index
-    @bookmarks = Bookmark.search(params[:search])
+    @bookmarks = Bookmark.where(user_id: current_user).search(params[:search])
   end
 
   def show
   end
 
   def new
-    @bookmark = Bookmark.new
+    @bookmark = current_user.bookmarks.build
   end
 
   def edit
   end
 
   def create
-    @bookmark = Bookmark.new(bookmark_params)
+    @bookmark = current_user.bookmarks.build(bookmark_params)
 
     respond_to do |format|
       if @bookmark.save
@@ -56,5 +59,9 @@ class BookmarksController < ApplicationController
 
     def bookmark_params
       params.require(:bookmark).permit(:title, :url)
+    end
+
+    def set_auth
+      @auth = session[:omniauth] if session[:omniauth]
     end
 end

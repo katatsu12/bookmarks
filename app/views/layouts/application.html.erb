@@ -4,23 +4,36 @@
     <title>Bookmarks</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   </head>
 
   <body>
+
+  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <% if current_user %>
-      Singed in as <strong><%= current_user.name %></strong>!
-      <%= link_to "Sing out", singout_path, id: "sing_out" %>
+      Singed in as: <%= current_user.name %>
+      <%= link_to "Sing out", sing_out_path, id: "sing_out" %>
+      <%= link_to "Home", root_path %>
+      <%= link_to "Search Friends", '/users/index' %>
+      <%= link_to "Friends", '/users/show' %>
+      <%= link_to "Friend bookmarks", '/users/friends_bookmark'  %>
     <% else %>
       <%= link_to "Sing in whith Facebook", '/auth/facebook', id: "sing_in" %>
+      <%= link_to "Sing in whith GitHub", '/auth/github', id: "sing_in" %>
     <% end %>
 
     <%= form_tag bookmarks_path, method: 'get' do %>
       <%= text_field_tag :search, params[:search] %>
       <%= submit_tag "Search" %>
     <% end %>
+  </nav>
 
+  <div class="container">
     <%= yield %>
-  </body>
+  </div>
+
+</body>
 </html>
