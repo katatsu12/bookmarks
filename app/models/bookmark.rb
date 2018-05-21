@@ -4,7 +4,7 @@ class Bookmark < ApplicationRecord
   belongs_to :user
   after_create do
     bookmark = self
-    bookmark.update(image: OpenImageUrl.get_url(self.url))
+    bookmark.update(image: OpenImageUrl.get_url(url))
   end
 
   def self.search(search)
