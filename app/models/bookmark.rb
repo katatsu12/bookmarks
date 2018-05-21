@@ -9,7 +9,7 @@ class Bookmark < ApplicationRecord
 
   def self.search(search)
     if search
-      where(['url LIKE ?', "%#{search}%"])
+      where(['title LIKE ?', "%#{search}%"])
     else
       all
     end

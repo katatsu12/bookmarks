@@ -4,12 +4,12 @@ class SessionsController < ApplicationController
     session[:omniauth] = auth.except('extra')
     user = User.sing_in_from_omniauth(auth)
     session[:user_id] = user.id
-    redirect_to root_url, notice: 'You are sing in'
+    redirect_to root_url
   end
 
   def destroy
     session[:user_id] = nil
     session[:omniauth] = nil
-    redirect_to root_url, notice: 'You are sing out'
+    redirect_to root_url
   end
 end

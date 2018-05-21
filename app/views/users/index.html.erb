@@ -1,19 +1,23 @@
-<h1>Search Friends</h1>
+<div class="index-center">
+  <h1>Search Friends</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
+<div class="table-content">
+  <table>
+    <thead>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %></td>
+        <th>Name: </th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
