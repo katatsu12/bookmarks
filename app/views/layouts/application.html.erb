@@ -16,7 +16,7 @@
       <% if current_user %>
         Welcome:
         <%= current_user.name %>
-        <%= link_to "Sing out", sing_out_path, id: "sing_out" %>
+        <%= link_to "Sign out", sign_out_path, id: "sign_out" %>
         <%= link_to "Home", root_path %>
         <%= link_to "Search Friends", '/users/index' %>
         <%= link_to "Friends", '/users/show' %>

@@ -1,14 +1,22 @@
-<div class="index-center">
-  <h2>Friends</h2>
-</div>
+<% if Friendship.where(user_id: current_user).count > 0  %>
+  <div class="index-center">
+    <h2>Friends</h2>
+  </div>
 
-<div class="table-content">
-  <ul>
-    <% for friendship in @user.friendships %>
-      <li>
-        <%=h friendship.friend.name %>
-        <%= link_to "remove", friendship, :method => :delete %>
-      </li>
-    <% end %>
-  </ul>
-</div>
+  <div class="table-content">
+    <ul>
+      <% for friendship in @user.friendships %>
+        <li>
+          <%=h friendship.friend.name %>
+          <%= link_to "remove", friendship, :method => :delete %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <div class="center-content">
+    <h3>You don't have any friends, you can find them
+      <a href="/users/index">here</a>
+    </h3>
+  </div>
+<% end %>

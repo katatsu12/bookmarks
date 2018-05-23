@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   get 'auth/:provider/callback', to: 'sessions#create'
 
-  match 'sing_out', to: 'sessions#destroy', as: 'sing_out', via: :all
+  match 'sign_out', to: 'sessions#destroy', as: 'sign_out', via: :all
 end

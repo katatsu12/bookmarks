@@ -1,29 +1,32 @@
 <p id="notice"><%= notice %></p>
 
 <% if current_user  %>
-  <div class="index-center">
-    <h1>Bookmarks</h1>
-  </div>
-  <% @bookmarks.each_slice(5) do |bookmar| %>
-    <div class="row">
-      <% bookmar.each do |bookmark| %>
-        <div class="col-md-2">
-          <a href="<%= bookmark.url %>">
-            <img src="<%= bookmark.image %>" class="rounded float-left" height="130" width="150">
-          </a>
-          <%= bookmark.title %><br>
-          <%= link_to 'Edit', edit_bookmark_path(bookmark) %>
-          |
-          <%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+
+
+
+    <% @bookmarks.each_slice(4) do |bookmar| %>
+      <div class="row">
+        <% bookmar.each do |bookmark| %>
+          <div class="icons">
+            <a href="<%= bookmark.url %>">
+              <img src="<%= bookmark.image %>" class="rounded float-left" height="170" width="200">
+            </a><br>
+              <%= bookmark.title %><br>
+              <%= link_to 'Edit', edit_bookmark_path(bookmark) %>
+              |
+              <%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+
+
 <% else %>
   <div class="center-content">
     <h1>Welcome</h1>
-    <%= link_to "Sing in with Facebook", '/auth/facebook', id: "sing_in" %><br>
-    <%= link_to "Sing in with GitHub", '/auth/github', id: "sing_in" %>
+    <%= link_to "Sign in with Facebook", '/auth/facebook', id: "sign_in" %><br>
+    <%= link_to "Sign in with GitHub", '/auth/github', id: "sign_in" %>
   </div>
 <% end %>
 <br>

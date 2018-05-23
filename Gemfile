@@ -19,6 +19,8 @@ gem 'figaro'
 gem 'devise'
 gem 'link_thumbnailer'
 gem 'bootstrap', '~> 4.1.0'
+gem 'activevalidators', '~> 4.0.1'
+gem 'will_paginate', '~> 3.1.0'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'

@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :inverse_friends, through: :inverse_friendships, source: :user
 
-  def self.sing_in_from_omniauth(auth)
+  def self.sign_in_from_omniauth(auth)
     find_by(provider: auth['provider'], uid: auth['uid']) || create_user_from_omniauth(auth)
   end
 

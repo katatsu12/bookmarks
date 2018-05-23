@@ -1,6 +1,7 @@
 require 'open_image_url'
 
 class Bookmark < ApplicationRecord
+  validates :url, presence: true, url: true
   belongs_to :user
   after_create do
     bookmark = self

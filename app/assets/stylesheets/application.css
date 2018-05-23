@@ -71,3 +71,12 @@ ul {
 td {
   font-size: 20px !important;
 }
+
+.new-form {
+  margin-top: 27px;
+}
+
+.icons {
+  padding-right: 5%;
+  padding-top: 3%;
+}

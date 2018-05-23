@@ -1,17 +1,17 @@
 <% if Friendship.where(user_id: current_user).count > 0  %>
   <div class="index-center">
-    <h1>Bookmark friends</h1>
+    <h3>Bookmark friends</h3>
   </div>
 
-  <% @friend_bookmark.each_slice(5) do |friend| %>
+  <% @friend_bookmark.each_slice(4) do |friend| %>
     <div class="row">
       <% friend.each do |key, value| %>
-        <div class="col-md-2">
+        <div class="icons">
 
           <% value.each do |i| %>
             <a href="<%= i[1] %>">
-              <img class="rounded float-left" height="130" width="150" src="<%= i[2] %>">
-            </a>
+              <img class="rounded float-left" height="170" width="200" src="<%= i[2] %>">
+            </a><br>
             <%= i[0] %>
             |
           <% end %>
