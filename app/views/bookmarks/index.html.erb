@@ -1,9 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<% if current_user  %>
-
-
-
+<% if current_user != nil  %>
+  <% if Bookmark.where(user_id: current_user).count > 0 %>
     <% @bookmarks.each_slice(4) do |bookmar| %>
       <div class="row">
         <% bookmar.each do |bookmark| %>
@@ -11,22 +9,29 @@
             <a href="<%= bookmark.url %>">
               <img src="<%= bookmark.image %>" class="rounded float-left" height="170" width="200">
             </a><br>
-              <%= bookmark.title %><br>
-              <%= link_to 'Edit', edit_bookmark_path(bookmark) %>
-              |
-              <%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= bookmark.title %><br>
+            <%= link_to 'Edit', edit_bookmark_path(bookmark) %>
+            |
+            <%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
         <% end %>
       </div>
     <% end %>
+    <div class="pagination">
+      <%= will_paginate @bookmarks, previous_label: '< ', next_label: ' >' %>
+    </div>
+  <% else %>
+    <div class="center-content">
+      <h3>You don't have any bookmar cleack <a href="/bookmarks/new">here</a> to add</h3>
+    </div>
 
-
-
+  <% end %>
+  <br>
 <% else %>
   <div class="center-content">
     <h1>Welcome</h1>
     <%= link_to "Sign in with Facebook", '/auth/facebook', id: "sign_in" %><br>
-    <%= link_to "Sign in with GitHub", '/auth/github', id: "sign_in" %>
+    <%= link_to "Sign in with Git", '/auth/github', id: "sign_in" %><br>
   </div>
+
 <% end %>
-<br>

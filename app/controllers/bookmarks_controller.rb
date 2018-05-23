@@ -5,7 +5,7 @@ class BookmarksController < ApplicationController
   before_action :set_auth
 
   def index
-    @bookmarks = Bookmark.where(user_id: current_user).search(params[:search])
+    @bookmarks = Bookmark.where(user_id: current_user).search(params[:search]).paginate(page: params[:page], per_page: 8)
   end
 
   def show; end

@@ -66,6 +66,7 @@ ul {
 
 .table-content {
   font-size: 25px;
+  margin-left: 40%;
 }
 
 td {
@@ -79,4 +80,9 @@ td {
 .icons {
   padding-right: 5%;
   padding-top: 3%;
+}
+
+.pagination {
+  margin-left: 28%;
+  margin-top: 10px;
 }
